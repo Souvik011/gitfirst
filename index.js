@@ -18,10 +18,20 @@
 
 //Get Elements by Class
 
-var items = document.getElementsByClassName("list-group-item");
-console.log(items);
-console.log(items[0]);
-items[1].textContent = 'Hello';
-items[1].style.fontWeight = 'Bold';
-items[1].style.backgroundColor = 'yellow';
-items[2].style.backgroundColor = 'green';
+//var items = document.getElementsByClassName("list-group-item");
+//console.log(items);
+//console.log(items[0]);
+//items[1].textContent = 'Hello';
+//items[1].style.fontWeight = 'Bold';
+//items[1].style.backgroundColor = 'yellow';
+//items[2].style.backgroundColor = 'green';
+
+
+//Get Elements BY Tag Name
+
+// var items = document.getElementsByClassName("list-group-item");
+// items[4].innerText='Front Text'
+
+var li = document.getElementsByTagName("li");
+li[4].innerText = 'New Item';
+li[4].style.backgroundColor = 'grey'
