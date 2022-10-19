@@ -32,6 +32,37 @@
 // var items = document.getElementsByClassName("list-group-item");
 // items[4].innerText='Front Text'
 
-var li = document.getElementsByTagName("li");
-li[4].innerText = 'New Item';
-li[4].style.backgroundColor = 'grey'
+// var li = document.getElementsByTagName("li");
+// li[4].innerText = 'New Item';
+// li[4].style.backgroundColor = 'grey'
+
+// Query Selector //
+
+// var header = document.querySelector('#main-header');
+// header.style.borderBottom = 'solid 5px grey';
+
+// var input = document.querySelector('input');
+// input.value = 'Hello World';
+
+// var submit = document.querySelector('input[type="submit"]');
+// submit.value='Send';
+
+// Query Selector all //
+
+// var titles = document.querySelectorAll('.title');
+// console.log(titles);
+
+
+//My Tasks for Task 5//
+// var seconditem = document.querySelector('.list-group-item:nth-child(2)');
+// seconditem.style.color='green';
+// var thirditem = document.querySelector('.list-group-item:nth-child(3)');
+// thirditem.style.display = 'none';
+
+
+var li2 = document.querySelector('li:nth-child(2)');
+li2.style.color='green';
+var lis = document.querySelectorAll('li:nth-child(odd)');
+for(var i=0;i<lis.length;i++){
+    lis[i].style.backgroundColor = 'green';
+}
