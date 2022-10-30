@@ -36,14 +36,27 @@ function onsubmit(e){
 
     else{
 
-        var username = document.getElementById('name').value;
-        var useremail = document.getElementById('email').value;
+        let username = document.getElementById('name').value;
+        let useremail = document.getElementById('email').value;
 
-        localStorage.setItem('name',username);
-        localStorage.setItem('email',useremail);
+        let userdetails = {
+            name : username ,
+            email : useremail
+        } ;
 
-        username = '';
-        useremail = '';
+        
+
+        let userdetails_serialized = JSON.stringify(userdetails);
+
+        localStorage.setItem('userdetails', userdetails_serialized);
+
+        
+
+        let userdetails_deserialized = JSON.parse(localStorage.getItem('userdetails'));
+
+        console.log(userdetails_deserialized);
+        
+
 
     }
 
