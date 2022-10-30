@@ -2,7 +2,7 @@ const form=document.querySelector('#my-form');
 
 const inputname=document.querySelector('#name');
 
-const email=document.querySelector('#email');
+const date=document.querySelector('#date');
 
 const msg=document.querySelector('.msg');
 
@@ -18,7 +18,7 @@ function onsubmit(e){
     e.preventDefault();
 
 
-    if(inputname.value===''|| email.value==='')
+    if(inputname.value===''|| date.value===null)
 
     {
 
@@ -36,23 +36,29 @@ function onsubmit(e){
 
     else{
 
+        
+
+        
+
         let username = document.getElementById('name').value;
-        let useremail = document.getElementById('email').value;
+        let userdate = document.getElementById('date').value;
 
         let userdetails = {
             name : username ,
-            email : useremail
+            date : userdate
         } ;
+
+        let userkey = 'userdetalis'+username;
 
         
 
         let userdetails_serialized = JSON.stringify(userdetails);
 
-        localStorage.setItem('userdetails', userdetails_serialized);
+        localStorage.setItem(userkey, userdetails_serialized);
 
         
 
-        let userdetails_deserialized = JSON.parse(localStorage.getItem('userdetails'));
+        let userdetails_deserialized = JSON.parse(localStorage.getItem(userkey));
 
         console.log(userdetails_deserialized);
         
@@ -61,3 +67,22 @@ function onsubmit(e){
     }
 
 }
+Object.keys(localStorage).forEach((key) => {
+
+
+
+    stringifiedDetailsOfPeople = localStorage.getItem(key);
+    
+    detailsOfPeople = JSON.parse(stringifiedDetailsOfPeople);
+
+    const li=document.createElement('li');
+
+    li.appendChild(document.createTextNode(detailsOfPeople.name+':'+detailsOfPeople.date));
+
+    userList.appendChild(li);
+    
+    
+    
+    console.log(detailsOfPeople);
+    
+    });
