@@ -1,103 +1,63 @@
-const form=document.querySelector('#my-form');
+var obj = {num:5};
 
-const inputname=document.querySelector('#name');
-
-const date=document.querySelector('#date');
-
-const msg=document.querySelector('.msg');
-
-const userList=document.querySelector('#users');
-form.addEventListener('submit',onsubmit);
-function onsubmit(e){
-    e.preventDefault();
-
-
-    if(inputname.value===''|| date.value===null)
-
-    {
-
-       msg.classList.add('error'); 
-        msg.innerHTML='please enter all fields';
-        setTimeout(() => {
-            msg.remove();
-        }, 3000);
-    }
-
-    else{
-
-
-
-
-
-        let username = document.getElementById('name').value;
-        let userdate = document.getElementById('date').value;
-
-        let userdetails = {
-            name : username ,
-            date : userdate
-        } ;
-
-        
-
-
-
-        let userdetails_serialized = JSON.stringify(userdetails);
-
-        localStorage.setItem(userdetails.name, userdetails_serialized);
-
-
-
-        let userdetails_deserialized = JSON.parse(localStorage.getItem(userdetails.name));
-
-        console.log(userdetails_deserialized);
-    function onsubmit(e){
-    }
-
-}
-Object.keys(localStorage).forEach((key) => {
-
-
-
-    stringifiedDetailsOfPeople = localStorage.getItem(key);
-
-    detailsOfPeople = JSON.parse(stringifiedDetailsOfPeople);
-
-    showNewUserOnScreen(detailsOfPeople);
-
-    });
+var newFunction = function(a,b,c){
+return this.num + a + b + c ;
 }
 
-function showNewUserOnScreen(user){
-    const parentNode = document.getElementById('users');
-    const childHTML = `<li id=${user.name}>${user.name}-${user.date}
-    <button onClick=editUser('${user.name}','${user.date}')> Edit </button>
-    <button onClick=deleteUser('${user.name}')> Delete user </button>
-     </li>`
+// Using Call
+var x = newFunction.call(obj,2,3,4);
 
-    parentNode.innerHTML = parentNode.innerHTML + childHTML;
-}
+console.log(x);
 
-function editUser(username,date){
+//Using apply
 
-    document.getElementById('name').value = username;
-    document.getElementById('date').value = date;
+var  arr = [2,3,4];
+var y = newFunction.apply(obj,arr);
 
-    deleteUser(username);
+console.log(y);
+
+//using Bind
+
+var bound = newFunction.bind(obj);
+console.log(bound(2,3,4));
+
+//Student Object
+
+var Student = {age:20};
+
+
+
+var printAge = function(){
+
+    console.log(`The Age of the Student is ${this.age} `);
 
 }
 
-function deleteUser(username){
+printAge.call(Student);
 
-    localStorage.removeItem(username);
-    removeUserFromScreen(username);
+//Curring using bind
 
+// let multiply = function(X,Y){
+//     console.log(X * Y);
+// }
 
+// let multiplyByTwo = multiply.bind(this, 2);
+// multiplyByTwo(5);
 
-    function removeUserFromScreen(username){
-        const parentNode = document.getElementById('users');
-        const deleteNode = document.getElementById(username);
+// let multiplyByThree = multiply.bind(this, 3);
+// multiplyByThree(5);
 
-        parentNode.removeChild(deleteNode);
+// Curring using Closers 
 
+let multiply = function(X){
+    return function(Y){
+        console.log(X * Y);
     }
 }
+
+let multiplyByTwo = multiply(2);
+multiplyByTwo(5);
+
+let multiplyByThree = multiply(3);
+multiplyByThree(5);
+
