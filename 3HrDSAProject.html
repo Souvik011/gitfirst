@@ -7,26 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <form id="fillupform">
-    <label for="'expence">Choose Expense-amount:</label>
+    <form id="addform">
+    <label for="'expence">Choose expenseamount:</label>
     <input type="text" id="expence">
-    <label for="description">Choose Description</label>
+    <label for="description">Choose description</label>
     <input type="text" id="description">
-    <label for="category">Choose a Category:</label>
+    <label for="category">Choose a category:</label>
   <select id="category" name="category">
-    <option value="fuel">Fuel</option>
     <option value="movie">Movie</option>
-    <option value="ticket">Ticket</option>
     <option value="dinner">Dinner</option>
+    <option value="fuel">Fuel</option>
+    <option value="ticket">Ticket</option>
   </select>
     <input type="submit" value="Add expences">
     <ul id="users"></ul>
 
-    </form>
+</form>
 
-
-
-    <script src="3HrDsaProject.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+    <script src="new.js"></script>
 </body>
 
 </html>
